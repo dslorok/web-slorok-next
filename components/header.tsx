@@ -6,6 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 import { Menu, X, Sun, Moon } from "lucide-react";
+import logo from "../public/assets/img/logo.png"
 
 const navigation = [
   { name: "Beranda", href: "/", icon: "fas fa-home" },
@@ -39,7 +40,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
         <div className="flex items-center space-x-3">
           <Image
-            src="/assets/img/logo.png"
+            src={logo}
             alt="Logo Desa"
             width={40}
             height={40}
