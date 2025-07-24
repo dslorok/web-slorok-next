@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import desa from "../../public/assets/img/desa.jpg"
 
 interface HeroData {
   title: string
@@ -55,7 +56,7 @@ export default function HeroSection() {
           </div>
           <div className="animate-fade-in-right animation-delay-600">
             <Image
-              src="/assets/img/desa.jpg"
+              src={desa}
               alt="Pemandangan Desa"
               width={600}
               height={400}
