@@ -32,7 +32,7 @@ export default function NewsSection() {
   const loadNews = async () => {
     setLoading(true)
     try {
-      const newsData = await fetchNewsData('news')
+      const newsData = await fetchNewsData('koperasi')
       setNews(newsData)
     } catch (error) {
       console.error("Error loading news:", error)
@@ -61,7 +61,7 @@ export default function NewsSection() {
     if (confirm(`Hapus berita "${newsItem.title}"?`)) {
       try {
         // Delete from Firebase
-        await deleteNews(newsItem.id.toString(), 'news')
+        await deleteNews(newsItem.id.toString(), 'koperasi')
         
         // Delete image from Supabase if it exists
         if (newsItem.image && newsItem.image.includes('supabase')) {
@@ -88,11 +88,11 @@ export default function NewsSection() {
     try {
       if (editingNews) {
         // Update existing news
-        await updateNews(editingNews.id.toString(), formData, 'news')
+        await updateNews(editingNews.id.toString(), formData, 'koperasi')
         console.log('News updated successfully')
       } else {
         // Add new news
-        await addNews(formData, 'news')
+        await addNews(formData, 'koperasi')
         console.log('News added successfully')
       }
       
@@ -122,7 +122,7 @@ export default function NewsSection() {
                 <div>
                   <h3 className="font-medium text-green-800 flex items-center">
                     <i className="fas fa-edit mr-2"></i>
-                    Mode Admin - Kelola Galeri Kegiatan
+                    Mode Admin - Kelola Kegiatan Koperasi Merah Putih
                   </h3>
                   <p className="text-sm text-green-600">Anda dapat menambah, mengedit, atau menghapus berita</p>
                 </div>
@@ -138,8 +138,8 @@ export default function NewsSection() {
           )}
 
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-4">Galeri Kegiatan</h2>
-            <p className="text-gray-600 dark:text-gray-300">Foto foto kegiatan di desa slorok</p>
+            <h2 className="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-4">Galeri Kegiatan Koperasi Merah Putih</h2>
+            <p className="text-gray-600 dark:text-gray-300">Foto-foto kegiatan di desa slorok</p>
           </div>
 
           {/* Loading State */}

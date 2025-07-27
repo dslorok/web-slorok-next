@@ -39,6 +39,10 @@ export default function Header() {
     <header className="fixed top-0 left-0 w-full h-16 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 z-40 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
         <div className="flex items-center space-x-3">
+          <Link 
+            href="/"
+            className="flex items-center space-x-2 text-gray-900 dark:text-white"
+          >
           <Image
             src={logo}
             alt="Logo Desa"
@@ -49,6 +53,7 @@ export default function Header() {
           <span className="text-lg font-semibold text-primary-600 dark:text-primary-400">
             Desa Slorok
           </span>
+          </Link>
         </div>
 
         {/* Desktop Navigation */}

@@ -20,6 +20,7 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground transition-colors duration-300;
   }
@@ -62,6 +63,11 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+
+  .gradient-bg {
+    @apply bg-gradient-to-tl from-[#1b5e20] to-green-400 p-4 text-white rounded hover:opacity-90;
+  }
+
 }
 
 @keyframes fadeInUp {
@@ -69,6 +75,7 @@
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -80,6 +87,7 @@
     opacity: 0;
     transform: translateX(30px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -92,17 +100,20 @@
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #f3f4f6; /* bg-gray-100 */
+  background-color: #f3f4f6;
+  /* bg-gray-100 */
   /* Untuk dark mode, bisa tambahkan via JS atau CSS custom */
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #9ca3af; /* bg-gray-400 */
+  background-color: #9ca3af;
+  /* bg-gray-400 */
   border-radius: 9999px;
   /* Untuk dark mode, bisa tambahkan via JS atau CSS custom */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #6b7280; /* bg-gray-500 */
+  background-color: #6b7280;
+  /* bg-gray-500 */
   /* Untuk dark mode, bisa tambahkan via JS atau CSS custom */
 }

@@ -8,7 +8,7 @@ import { formatDate } from "@/lib/utils"
 import NewsModal from "./news-modal"
 
 interface NewsItem {
-  id: number
+  id: string
   title: string
   excerpt: string
   content: string
@@ -21,7 +21,6 @@ interface NewsItem {
 export default function NewsContent() {
   const [news, setNews] = useState<NewsItem[]>([])
   const [filteredNews, setFilteredNews] = useState<NewsItem[]>([])
-  const [selectedCategory, setSelectedCategory] = useState("all")
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedNews, setSelectedNews] = useState<NewsItem | null>(null)
   const [currentPage, setCurrentPage] = useState(1)
@@ -42,38 +41,22 @@ export default function NewsContent() {
     loadNews()
   }, [])
 
-  useEffect(() => {
-    let filtered = news
-
-    if (selectedCategory !== "all") {
-      filtered = filtered.filter((item) => item.category === selectedCategory)
-    }
-
-    if (searchQuery) {
-      filtered = filtered.filter(
-        (item) =>
-          item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          item.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          item.content.toLowerCase().includes(searchQuery.toLowerCase()),
-      )
-    }
-
-    setFilteredNews(filtered)
-    setCurrentPage(1)
-  }, [news, selectedCategory, searchQuery])
-
-  const categories = ["all", "Pembangunan", "Sosial", "Ekonomi", "Lingkungan"]
   const startIndex = (currentPage - 1) * newsPerPage
   const endIndex = currentPage * newsPerPage
   const currentNews = filteredNews.slice(startIndex, endIndex)
   const hasMore = endIndex < filteredNews.length
 
-  const handleCategoryFilter = (category: string) => {
-    setSelectedCategory(category)
-  }
-
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
+    const query = searchQuery.toLowerCase()
+    const filtered = news.filter(
+      (item) =>
+        item.title.toLowerCase().includes(query) ||
+        item.excerpt.toLowerCase().includes(query) ||
+        item.content.toLowerCase().includes(query)
+    )
+    setFilteredNews(filtered)
+    setCurrentPage(1)
   }
 
   const handleNewsClick = (newsItem: NewsItem) => {
@@ -91,23 +74,10 @@ export default function NewsContent() {
   return (
     <>
       {/* News Filter */}
-      <section className="py-8 bg-gray-50 dark:bg-gray-800">
+      <section className="py-4 bg-gray-50 dark:bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex flex-wrap gap-2">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  onClick={() => handleCategoryFilter(category)}
-                  className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
-                    selectedCategory === category
-                      ? "bg-primary-600 text-white"
-                      : "bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600 border border-gray-300 dark:border-gray-600"
-                  }`}
-                >
-                  {category === "all" ? "Semua" : category}
-                </button>
-              ))}
             </div>
             <form onSubmit={handleSearch} className="flex items-center space-x-4">
               <input
@@ -129,7 +99,7 @@ export default function NewsContent() {
       </section>
 
       {/* News Grid */}
-      <section className="py-16">
+      <section className="py-8 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {currentNews.length > 0 ? (
             <>
@@ -151,9 +121,6 @@ export default function NewsContent() {
                       <div className="flex items-center justify-between mb-3">
                         <span className="text-sm text-gray-500 dark:text-gray-400 font-medium">
                           {formatDate(item.date)}
-                        </span>
-                        <span className="bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 px-2 py-1 rounded text-xs font-medium">
-                          {item.category}
                         </span>
                       </div>
                       <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3 line-clamp-2">

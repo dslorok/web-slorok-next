@@ -2,35 +2,28 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import PopulationData from "./population-data"
-import AgricultureData from "./agriculture-data"
-import BudgetData from "./budget-data"
+import BumdesSection from "./bumdes-section"
+import MerahPutihSection from "./merah-putih-section"
 
-export default function InfographicsContent() {
-  const [activeTab, setActiveTab] = useState("population")
+export default function BumdesContent() {
+  const [activeTab, setActiveTab] = useState("bumdes")
 
   const tabs = [
     {
-      id: "population",
-      title: "Data Penduduk",
+      id: "bumdes",
+      title: "Badan Usaha\nMilik Desa",
       icon: "/assets/img/Penduduk.png",
-      component: PopulationData,
+      component: BumdesSection,
     },
     {
-      id: "agriculture",
-      title: "Data Potensi\nPertanian",
+      id: "merah-putih",
+      title: "Koperasi\n Merah Putih",
       icon: "/assets/img/farmer.png",
-      component: AgricultureData,
-    },
-    {
-      id: "budget",
-      title: "Data APBD Desa",
-      icon: "/assets/img/money.png",
-      component: BudgetData,
-    },
+      component: MerahPutihSection,
+    }
   ]
 
-  const ActiveComponent = tabs.find((tab) => tab.id === activeTab)?.component || PopulationData
+  const ActiveComponent = tabs.find((tab) => tab.id === activeTab)?.component || BumdesSection
 
   return (
     <>

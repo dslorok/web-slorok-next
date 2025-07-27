@@ -8,14 +8,13 @@ import { X } from "lucide-react"
 import { formatDate } from "@/lib/utils"
 
 interface NewsItem {
-  id: number
+  id: string
   title: string
   excerpt: string
   content: string
   image: string
   date: string
   author: string
-  category: string
 }
 
 interface NewsModalProps {
@@ -79,9 +78,6 @@ export default function NewsModal({ news, onClose }: NewsModalProps) {
             <span>
               <i className="fas fa-user mr-1"></i>
               {news.author}
-            </span>
-            <span className="bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 px-2 py-1 rounded">
-              {news.category}
             </span>
           </div>
 

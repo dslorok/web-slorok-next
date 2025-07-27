@@ -14,7 +14,7 @@ export default function ProfilePage() {
     <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
       <Header />
       <main className="pt-16 min-h-screen">
-        <section className="bg-gradient-to-r from-primary-600 to-primary-700 text-white py-24">
+        <section className="gradient-bg py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 className="text-4xl font-bold mb-4">Profile Desa Slorok</h1>
             <p className="text-xl opacity-90">Mengenal lebih dekat desa kami</p>
