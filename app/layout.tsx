@@ -18,8 +18,7 @@ export const metadata: Metadata = {
   description: "Website resmi Desa Slorok - Desa yang maju, mandiri, dan sejahtera",
   icons: {
     icon: "/assets/img/logo.png",
-  },
-  generator: 'v0.dev'
+  }
 }
 
 export default function RootLayout({
