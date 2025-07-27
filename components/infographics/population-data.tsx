@@ -275,7 +275,7 @@ export default function PopulationData() {
   const filteredJobData = currentJobData.filter((job: JobData) => job.jumlah > 0)
   const sortedJobData = [...filteredJobData].sort((a, b) => b.jumlah - a.jumlah)
   const top6Jobs = sortedJobData.slice(0, 6)
-  
+
   // State for showing all jobs
   const [showAllJobs, setShowAllJobs] = useState(false)
 
@@ -436,7 +436,7 @@ export default function PopulationData() {
                   </div>
                 )}
               </div>
-              
+
               {/* Show All Jobs Button */}
               {sortedJobData.length > 0 && (
                 <div className="p-3 border-t border-gray-200 dark:border-gray-700">
@@ -518,7 +518,7 @@ export default function PopulationData() {
           <div className="bg-white dark:bg-gray-800 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-hidden">
             <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
               <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-                Semua Pekerjaan dengan Nilai &gt; 0 ({filter === 'semua' ? 'Semua' : filter === 'laki_laki' ? 'Laki-laki' : 'Perempuan'})
+                Semua Pekerjaan ({filter === 'semua' ? 'Semua' : filter === 'laki_laki' ? 'Laki-laki' : 'Perempuan'})
               </h2>
               <button
                 onClick={() => setShowAllJobs(false)}
@@ -550,40 +550,42 @@ export default function PopulationData() {
               </div>
 
               {/* Jobs List */}
-              <div className="space-y-2">
-                <div className="grid grid-cols-12 gap-4 p-3 bg-gray-100 dark:bg-gray-700 rounded-lg font-semibold text-sm">
-                  <div className="col-span-1">#</div>
-                  <div className="col-span-7">Nama Pekerjaan</div>
-                  <div className="col-span-2 text-right">Jumlah</div>
-                  <div className="col-span-2 text-right">Persentase</div>
+              <div className="overflow-x-auto">
+                <div className="min-w-[400px] space-y-2">
+                  <div className="grid grid-cols-12 gap-4 p-3 bg-gray-100 dark:bg-gray-700 rounded-lg font-semibold text-sm">
+                    <div className="col-span-1">#</div>
+                    <div className="col-span-7">Nama Pekerjaan</div>
+                    <div className="col-span-2 text-right">Jumlah</div>
+                    <div className="col-span-2 text-right">Persentase</div>
+                  </div>
+
+                  {sortedJobData.map((job: JobData, index: number) => {
+                    const totalWorkers = sortedJobData.reduce((sum, j) => sum + j.jumlah, 0);
+                    const percentage = ((job.jumlah / totalWorkers) * 100).toFixed(1);
+
+                    return (
+                      <div
+                        key={index}
+                        className="grid grid-cols-12 gap-4 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
+                      >
+                        <div className="col-span-1 text-sm text-gray-600 dark:text-gray-400 font-medium">
+                          {index + 1}
+                        </div>
+                        <div className="col-span-7 text-sm font-medium text-gray-900 dark:text-white">
+                          {job.jenis}
+                        </div>
+                        <div className="col-span-2 text-sm font-bold text-right text-gray-900 dark:text-white">
+                          {job.jumlah.toLocaleString("id-ID")}
+                        </div>
+                        <div className="col-span-2 text-sm text-right text-gray-600 dark:text-gray-400">
+                          {percentage}%
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
-                
-                {sortedJobData.map((job: JobData, index: number) => {
-                  const totalWorkers = sortedJobData.reduce((sum, j) => sum + j.jumlah, 0);
-                  const percentage = ((job.jumlah / totalWorkers) * 100).toFixed(1);
-                  
-                  return (
-                    <div 
-                      key={index} 
-                      className="grid grid-cols-12 gap-4 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
-                    >
-                      <div className="col-span-1 text-sm text-gray-600 dark:text-gray-400 font-medium">
-                        {index + 1}
-                      </div>
-                      <div className="col-span-7 text-sm font-medium text-gray-900 dark:text-white">
-                        {job.jenis}
-                      </div>
-                      <div className="col-span-2 text-sm font-bold text-right text-gray-900 dark:text-white">
-                        {job.jumlah.toLocaleString("id-ID")}
-                      </div>
-                      <div className="col-span-2 text-sm text-right text-gray-600 dark:text-gray-400">
-                        {percentage}%
-                      </div>
-                    </div>
-                  );
-                })}
               </div>
-              
+
               {sortedJobData.length === 0 && (
                 <div className="text-center py-12">
                   <i className="fas fa-briefcase text-4xl text-gray-400 mb-4"></i>

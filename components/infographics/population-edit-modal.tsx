@@ -18,28 +18,23 @@ interface PopulationEditModalProps {
 
 // Sample job list (in real app, this would come from database)
 const AVAILABLE_JOBS = [
-  'Petani', 'Buruh Tani', 'Pedagang', 'Guru', 'Perawat', 'Sopir', 'Tukang Bangunan',
-  'PNS', 'TNI', 'Polri', 'Dokter', 'Bidan', 'Nelayan', 'Peternak', 'Wiraswasta',
-  'Pegawai Swasta', 'Honorer', 'Pensiunan', 'Ibu Rumah Tangga', 'Mahasiswa',
-  'Pelajar', 'Balita', 'Tukang Kayu', 'Tukang Besi', 'Montir', 'Tukang Jahit',
-  'Koki', 'Satpam', 'Cleaning Service', 'Tukang Ojek', 'Tukang Becak',
-  'Pedagang Keliling', 'Pedagang Kaki Lima', 'Warung Makan', 'Toko Kelontong',
-  'Salon/Barbershop', 'Bengkel', 'Laundry', 'Fotocopy', 'Warnet', 'Rental',
-  'Kontraktor', 'Arsitek', 'Insinyur', 'Akuntan', 'Lawyer', 'Notaris',
-  'Makelar', 'Agen Asuransi', 'Marketing', 'Sales', 'Customer Service',
-  'Programmer', 'Designer', 'Journalist', 'Fotografer', 'Videographer',
-  'Musisi', 'Seniman', 'Atlet', 'Pelatih', 'Instruktur', 'Konsultan',
-  'Peneliti', 'Dosen', 'Pustakawan', 'Teknisi', 'Operator', 'Supervisor',
-  'Manager', 'Direktur', 'CEO', 'Sekretaris', 'Admin', 'Resepsionis',
-  'Kasir', 'Teller', 'Security', 'Driver', 'Kurir', 'Ekspedisi',
-  'Import/Export', 'Distributor', 'Supplier', 'Wholesaler', 'Retailer',
-  'Franchisor', 'Dropshipper', 'Reseller', 'Affiliate', 'Influencer',
-  'Content Creator', 'Blogger', 'Vlogger', 'Streamer', 'Gamer',
-  'Petani Sayur', 'Petani Padi', 'Petani Jagung', 'Petani Cabai',
-  'Peternak Ayam', 'Peternak Kambing', 'Peternak Sapi', 'Peternak Ikan',
-  'Pedagang Ikan', 'Pedagang Sayur', 'Pedagang Buah', 'Pedagang Daging',
-  'Tukang Listrik', 'Tukang Pipa', 'Tukang AC', 'Tukang Elektronik',
-  'Pengrajin', 'Pemahat', 'Penenun', 'Pembatik', 'Keramik', 'Anyaman'
+  "Belum Tidak Bekerja", "Mengurus Rumah Tangga", "Pelajar Mahasiswa", "Pensiunan",
+  "Pegawai Negeri Sipil", "Tentara Nasional Indonesia", "Kepolisian RI", "Perdagangan",
+  "Petani Pekebun", "Peternak", "Nelayan Perikanan", "Industri", "Konstruksi",
+  "Transportasi", "Karyawan Swasta", "Karyawan BUMN", "Karyawan BUMD", "Karyawan Honorer",
+  "Buruh Harian Lepas", "Buruh Tani Perkebunan", "Buruh Nelayan Perikanan", "Buruh Peternakan",
+  "Pembantu Rumah Tangga", "Tukang Cukur", "Tukang Listrik", "Tukang Batu", "Tukang Kayu",
+  "Tukang Sol Sepatu", "Tukang Las Pandai Besi", "Tukang Jahit", "Tukang Gigi", "Penata Rias",
+  "Penata Busana", "Penata Rambut", "Mekanik", "Seniman", "Tabib", "Paraji", "Perancang Busana",
+  "Penterjemah", "Imam Masjid", "Pendeta", "Pastor", "Wartawan", "Ustadz Mubaligh", "Juru Masak",
+  "Promotor Acara", "Anggota DPR RI", "Anggota DPD RI", "Anggota BPK", "Presiden", "Wakil Presiden",
+  "Anggota Mahkamah Konstitusi", "Anggota Kabinet Kementrian", "Duta Besar", "Gubernur", "Wakil Gubernur",
+  "Bupati", "Wakil Bupati", "Walikota", "Wakil Walikota", "Anggota DPRD Prop", "Anggota DPRD Kab Kota",
+  "Dosen", "Guru", "Pilot", "Pengacara", "Notaris", "Arsitek", "Akuntan", "Konsultan", "Dokter", "Bidan",
+  "Perawat", "Apoteker", "Psikiater Psikolog", "Penyiar Televisi", "Penyiar Radio", "Pelaut", "Peneliti",
+  "Sopir", "Pialang", "Paranormal", "Pedagang", "Perangkat Desa", "Kepala Desa", "Biarawan Biarawati",
+  "Wiraswasta", "Anggota Lembaga Tinggi Lainnya", "Artis", "Atlit", "Cheff", "Manajer", "Tenaga Tata Usaha",
+  "Operator", "Pekerja Pengolahan Kerajinan", "Teknisi", "Asisten Ahli", "Pekerjaan Lainnya", "Jumlah Total"
 ];
 
 export default function PopulationEditModal({
